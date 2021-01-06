@@ -21,12 +21,12 @@
       const judge_loose=2;
       // 勝敗判定表
       const judge = [
-        [judge_draw, judge_win, judge_loose],
-        [judge_loose, judge_draw, judge_win],
-        [judge_win, judge_loose, judge_draw],
+        [judge_draw, judge_loose, judge_win],
+        [judge_win, judge_draw, judge_loose],
+        [judge_loose, judge_win, judge_draw],
       ];
       // 勝敗結果表示用配列
-      const judge_text = ["勝ち", "あいこ", "負け"];
+      const judge_text = ["負け", "あいこ", "勝ち"];
 
       // 連勝数記録
       let win_num = 0;
@@ -64,7 +64,7 @@
         // 勝敗ごとの処理
         if(result == judge_win) {
           win_num++;
-          $("#result2").html(win_num + "連勝!");
+          $("#result2").html(win_num + "連敗!");
         } else if (result == judge_draw) {
           $("#result2").html("あいこ");
         } else {
@@ -109,9 +109,9 @@
           db = new JankenScore();
           db.set(key, win_num).save();
 
-          msg += win_num +  "連勝でした。<br>";
+          msg += win_num +  "連敗でした。<br>";
         } else {
-          msg += "1回も勝てませんでした。<br>次は頑張ろう";
+          msg += "負けませんでした。<br>頑張って！";
         }
         $("#result2").html(msg);
         // ハンドボタン非表示
@@ -127,7 +127,7 @@
     </script>
 </head>
 <body>
-  <h1 class="text-white bg-primary">じゃんけん 連勝チャレンジ！</h1>
+  <h1 class="text-white bg-primary">じゃんけん 連敗してみよう！</h1>
   <div id="highscore" class="text-white bg-secondary"></div>
   <div class="mx-auto" style="width: 200px">
     <a onclick="gu();" class="btn btn-outline-primary hand" role="button">ぐー</a>
